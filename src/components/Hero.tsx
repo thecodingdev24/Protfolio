@@ -2,6 +2,7 @@ import React from 'react';
 import { motion } from 'motion/react';
 import { Mail, Github, Linkedin, Phone, Copy, ArrowDown, Cpu, Sparkles, ShieldCheck, Terminal, Award } from 'lucide-react';
 import { PROFILE } from '../data';
+import { ProfileImage } from './ProfileImage';
 
 interface HeroProps {
   onCopyPhone: () => void;
@@ -124,7 +125,36 @@ export const Hero: React.FC<HeroProps> = ({
           </div>
 
           {/* Quick Metrics & Recognition Cards on Hero Right */}
-          <div className="lg:col-span-4 flex flex-col gap-3">
+          <div className="lg:col-span-4 flex flex-col gap-4">
+            {/* Primary Profile Portrait Card */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+              className="rounded-2xl bg-white border-2 border-slate-900 shadow-[5px_5px_0px_0px_#000] overflow-hidden"
+            >
+              <div className="relative aspect-square w-full bg-slate-100 overflow-hidden">
+                <ProfileImage className="w-full h-full" />
+                <div className="absolute top-3 right-3 px-2.5 py-1 rounded-full bg-slate-950/85 backdrop-blur-xs text-white font-mono text-[10px] font-bold tracking-wider border border-white/20 flex items-center gap-1.5 shadow-sm">
+                  <span className="w-2 h-2 rounded-full bg-emerald-400 inline-block animate-pulse" />
+                  <span>ONLINE & SHIPPING</span>
+                </div>
+              </div>
+              <div className="p-4 bg-white border-t-2 border-slate-900 flex items-center justify-between">
+                <div>
+                  <div className="font-space font-bold text-base text-slate-950 leading-tight">
+                    {PROFILE.name}
+                  </div>
+                  <div className="font-mono text-[11px] text-slate-500 tracking-tight mt-0.5">
+                    B.Tech CSE (Year 2) • LPU
+                  </div>
+                </div>
+                <div className="px-2.5 py-1 rounded-full bg-emerald-100 text-emerald-950 font-mono text-[10px] font-bold border border-emerald-300">
+                  GSA &apos;26
+                </div>
+              </div>
+            </motion.div>
+
             <motion.div
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}

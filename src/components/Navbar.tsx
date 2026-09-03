@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { Search, Menu, X, ArrowUpRight, Terminal } from 'lucide-react';
 import { PROFILE } from '../data';
+import { ProfileImage } from './ProfileImage';
 
 interface NavbarProps {
   onOpenCommandPalette: () => void;
@@ -58,9 +59,9 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenCommandPalette, activeSect
             className="group flex items-center gap-2.5 text-decoration-none"
             id="nav-logo"
           >
-            <span className="w-8 h-8 rounded-lg bg-slate-950 text-white font-mono text-sm font-bold flex items-center justify-center border-2 border-slate-900 group-hover:border-emerald-400 group-hover:shadow-[0_0_12px_rgba(0,229,106,0.5)] transition-all">
-              {PROFILE.initials}
-            </span>
+            <div className="w-8 h-8 rounded-lg overflow-hidden border-2 border-slate-900 group-hover:border-emerald-400 group-hover:shadow-[0_0_12px_rgba(0,229,106,0.5)] transition-all bg-slate-900 flex-shrink-0">
+              <ProfileImage className="w-full h-full" />
+            </div>
             <div className="flex flex-col">
               <span className="font-space font-bold text-slate-900 text-sm tracking-tight">
                 {PROFILE.name}

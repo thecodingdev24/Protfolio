@@ -1,6 +1,7 @@
 import React from 'react';
 import { Terminal, Shield, Rocket, Users, Sparkles } from 'lucide-react';
 import { PROFILE } from '../data';
+import { ProfileImage } from './ProfileImage';
 
 export const AboutSection: React.FC = () => {
   return (
@@ -15,8 +16,27 @@ export const AboutSection: React.FC = () => {
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
-          {/* Left Column: Big Year / Cohort Stamp */}
+          {/* Left Column: Profile Card + Big Year / Cohort Stamp */}
           <div className="lg:col-span-4 p-6 sm:p-8 rounded-2xl border-2 border-slate-900 bg-white shadow-[6px_6px_0px_0px_#000]">
+            {/* Embedded Portrait Photo */}
+            <div className="mb-6 pb-6 border-b border-slate-200 flex items-center gap-4">
+              <div className="w-20 h-20 rounded-xl overflow-hidden border-2 border-slate-900 shadow-[3px_3px_0px_0px_#000] flex-shrink-0 bg-slate-100">
+                <ProfileImage className="w-full h-full" />
+              </div>
+              <div>
+                <h3 className="font-space font-bold text-base text-slate-950 leading-tight">
+                  {PROFILE.name}
+                </h3>
+                <p className="font-mono text-[11px] text-slate-500 mt-0.5">
+                  Aspiring Cloud & Backend Engineer
+                </p>
+                <div className="mt-2 inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-900 text-[10px] font-mono font-bold border border-emerald-300">
+                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
+                  Second-Year CSE
+                </div>
+              </div>
+            </div>
+
             <div className="font-mono text-xs font-bold text-slate-500 uppercase tracking-widest mb-1">
               Active Cohort
             </div>
