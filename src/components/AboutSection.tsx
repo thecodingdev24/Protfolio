@@ -1,9 +1,13 @@
 import React from 'react';
-import { Terminal, Shield, Rocket, Users, Sparkles } from 'lucide-react';
+import { Terminal, Shield, Rocket, Users, Sparkles, FileText, Download } from 'lucide-react';
 import { PROFILE } from '../data';
 import { ProfileImage } from './ProfileImage';
 
-export const AboutSection: React.FC = () => {
+interface AboutSectionProps {
+  onOpenResume?: () => void;
+}
+
+export const AboutSection: React.FC<AboutSectionProps> = ({ onOpenResume }) => {
   return (
     <section id="about" className="py-20 border-t border-slate-200 bg-white">
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
@@ -64,6 +68,30 @@ export const AboutSection: React.FC = () => {
               <div className="flex items-center justify-between">
                 <span className="text-slate-500">Philosophy</span>
                 <span className="font-bold text-slate-900">Ship complete code</span>
+              </div>
+            </div>
+
+            {/* Official Resume Card in About */}
+            <div className="mt-6 pt-5 border-t border-slate-200">
+              <button
+                id="about-view-resume-btn"
+                type="button"
+                onClick={onOpenResume}
+                className="w-full inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-slate-950 hover:bg-slate-800 text-white font-mono text-xs font-bold border border-slate-900 shadow-[3px_3px_0px_0px_#000] hover:shadow-none hover:translate-x-0.5 hover:translate-y-0.5 transition-all"
+              >
+                <FileText className="w-4 h-4 text-emerald-400 stroke-[2.5]" />
+                <span>View Full Resume</span>
+              </button>
+              <div className="mt-2 flex items-center justify-center">
+                <a
+                  id="about-download-resume-link"
+                  href="/Shalender_Singh_Resume.pdf"
+                  download="Shalender_Singh_Resume.pdf"
+                  className="font-mono text-[11px] text-slate-600 hover:text-emerald-700 hover:underline inline-flex items-center gap-1 transition-colors"
+                >
+                  <Download className="w-3 h-3 text-emerald-600" />
+                  <span>Download PDF (17 KB)</span>
+                </a>
               </div>
             </div>
           </div>

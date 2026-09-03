@@ -10,6 +10,7 @@ import { AboutSection } from './components/AboutSection';
 import { ContactSection } from './components/ContactSection';
 import { Footer } from './components/Footer';
 import { CommandPalette } from './components/CommandPalette';
+import { ResumeModal } from './components/ResumeModal';
 import { Toast } from './components/Toast';
 import { PROFILE } from './data';
 
@@ -17,6 +18,7 @@ export default function App() {
   const [activeSection, setActiveSection] = useState<string>('top');
   const [toastMessage, setToastMessage] = useState<string | null>(null);
   const [isCommandPaletteOpen, setIsCommandPaletteOpen] = useState<boolean>(false);
+  const [isResumeModalOpen, setIsResumeModalOpen] = useState<boolean>(false);
 
   const showToast = (msg: string) => {
     setToastMessage(msg);
@@ -89,6 +91,7 @@ export default function App() {
       <Navbar
         onOpenCommandPalette={() => setIsCommandPaletteOpen(true)}
         activeSection={activeSection}
+        onOpenResume={() => setIsResumeModalOpen(true)}
       />
 
       {/* Hero Section */}
@@ -96,6 +99,7 @@ export default function App() {
         onCopyPhone={handleCopyPhone}
         onCopyEmail={handleCopyEmail}
         onExploreArchitecture={handleExploreArchitecture}
+        onOpenResume={() => setIsResumeModalOpen(true)}
       />
 
       <main>
@@ -115,7 +119,9 @@ export default function App() {
         <RecognitionSection />
 
         {/* 05. About */}
-        <AboutSection />
+        <AboutSection
+          onOpenResume={() => setIsResumeModalOpen(true)}
+        />
 
         {/* 06. Contact */}
         <ContactSection
@@ -127,6 +133,12 @@ export default function App() {
       {/* Editorial Footer */}
       <Footer />
 
+      {/* Resume Viewer & Download Modal */}
+      <ResumeModal
+        isOpen={isResumeModalOpen}
+        onClose={() => setIsResumeModalOpen(false)}
+      />
+
       {/* Command Palette (Cmd + K) */}
       <CommandPalette
         isOpen={isCommandPaletteOpen}
@@ -134,6 +146,7 @@ export default function App() {
         onSelectSection={handleSelectSection}
         onCopyPhone={handleCopyPhone}
         onCopyEmail={handleCopyEmail}
+        onOpenResume={() => setIsResumeModalOpen(true)}
       />
     </div>
   );

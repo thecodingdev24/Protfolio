@@ -63,6 +63,16 @@ export interface CertificateItem {
   badgeColor: 'lime' | 'cyan' | 'amber';
 }
 
+export interface TrainingItem {
+  id: string;
+  role: string;
+  company: string;
+  type: string;
+  period: string;
+  bullets: string[];
+  techStack: string[];
+}
+
 export interface CloudNode {
   id: string;
   title: string;

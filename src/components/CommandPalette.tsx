@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { Search, Terminal, ArrowRight, X, Mail, Phone, Github, Linkedin, ExternalLink, Code2, Server } from 'lucide-react';
+import { Search, Terminal, ArrowRight, X, Mail, Phone, Github, Linkedin, ExternalLink, Code2, Server, FileText, Download } from 'lucide-react';
 import { PROFILE, PROJECTS } from '../data';
 
 interface CommandPaletteProps {
@@ -9,6 +9,7 @@ interface CommandPaletteProps {
   onSelectSection: (id: string) => void;
   onCopyPhone: () => void;
   onCopyEmail: () => void;
+  onOpenResume?: () => void;
 }
 
 export const CommandPalette: React.FC<CommandPaletteProps> = ({
@@ -17,6 +18,7 @@ export const CommandPalette: React.FC<CommandPaletteProps> = ({
   onSelectSection,
   onCopyPhone,
   onCopyEmail,
+  onOpenResume,
 }) => {
   const [query, setQuery] = useState('');
 
@@ -40,6 +42,8 @@ export const CommandPalette: React.FC<CommandPaletteProps> = ({
   if (!isOpen) return null;
 
   const actions = [
+    { id: 'download-resume', title: 'Download Resume (PDF)', desc: 'Download Shalender_Singh_Resume.pdf (17 KB)', category: 'Resume', icon: Download, action: () => { const a = document.createElement('a'); a.href = '/Shalender_Singh_Resume.pdf'; a.download = 'Shalender_Singh_Resume.pdf'; a.click(); } },
+    { id: 'view-resume', title: 'Preview Resume (Interactive)', desc: 'View complete 1-page ATS formatted resume modal', category: 'Resume', icon: FileText, action: onOpenResume },
     { id: 'build', title: 'The Build', desc: 'Browse Tikki Topple & CarVault projects', category: 'Navigation', icon: Code2 },
     { id: 'stack', title: 'The Stack', desc: 'Explore languages, MySQL, Git, and frameworks', category: 'Navigation', icon: Terminal },
     { id: 'cloud-lab', title: 'Cloud Backbone Lab', desc: 'Simulate distributed backend request flow', category: 'Interactive', icon: Server },

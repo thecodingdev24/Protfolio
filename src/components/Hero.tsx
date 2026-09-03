@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'motion/react';
-import { Mail, Github, Linkedin, Phone, Copy, ArrowDown, Cpu, Sparkles, ShieldCheck, Terminal, Award } from 'lucide-react';
+import { Mail, Github, Linkedin, Phone, Copy, ArrowDown, Cpu, Sparkles, ShieldCheck, Terminal, Award, FileText, Download } from 'lucide-react';
 import { PROFILE } from '../data';
 import { ProfileImage } from './ProfileImage';
 
@@ -8,12 +8,14 @@ interface HeroProps {
   onCopyPhone: () => void;
   onCopyEmail: () => void;
   onExploreArchitecture: () => void;
+  onOpenResume?: () => void;
 }
 
 export const Hero: React.FC<HeroProps> = ({
   onCopyPhone,
   onCopyEmail,
   onExploreArchitecture,
+  onOpenResume,
 }) => {
   return (
     <section
@@ -84,6 +86,30 @@ export const Hero: React.FC<HeroProps> = ({
                 <Mail className="w-4 h-4 text-slate-950 stroke-[2.5]" />
                 <span>Send Email</span>
               </a>
+
+              {/* Resume Download & Preview Button */}
+              <div className="inline-flex items-center rounded-full bg-white border-2 border-slate-900 shadow-[3px_3px_0px_0px_#000] hover:shadow-[1px_1px_0px_0px_#000] hover:translate-x-0.5 hover:translate-y-0.5 transition-all overflow-hidden">
+                <button
+                  id="hero-view-resume-btn"
+                  type="button"
+                  onClick={onOpenResume}
+                  className="inline-flex items-center gap-1.5 px-3.5 py-2.5 hover:bg-slate-50 text-slate-900 font-mono text-xs sm:text-sm font-bold border-r border-slate-200 transition-colors"
+                  title="Preview Shalender's Resume"
+                >
+                  <FileText className="w-4 h-4 text-emerald-600" />
+                  <span>Resume</span>
+                </button>
+                <a
+                  id="hero-download-resume-btn"
+                  href="/Shalender_Singh_Resume.pdf"
+                  download="Shalender_Singh_Resume.pdf"
+                  className="inline-flex items-center gap-1 px-3 py-2.5 bg-slate-950 hover:bg-slate-800 text-white font-mono text-xs font-bold transition-colors"
+                  title="Download Shalender_Singh_Resume.pdf (17 KB)"
+                >
+                  <Download className="w-3.5 h-3.5 text-emerald-400 stroke-[2.5]" />
+                  <span>PDF</span>
+                </a>
+              </div>
 
               {/* GitHub Link */}
               <a

@@ -1,4 +1,4 @@
-import { Project, SkillCategory, EducationItem, AchievementItem, CertificateItem, CloudNode } from './types';
+import { Project, SkillCategory, EducationItem, AchievementItem, CertificateItem, CloudNode, TrainingItem } from './types';
 
 export const PROFILE = {
   name: 'Shalender Singh',
@@ -16,6 +16,8 @@ export const PROFILE = {
   cohort: "GSA '26 Cohort",
   headline: 'Engineering the Backbone of Cloud Systems',
   bioSummary: 'Building the servers, infrastructure, and distributed logic that run underneath modern software. Second-year CSE undergraduate with an end-to-end shipping mindset, certified in Cloud Computing by Infosys.',
+  resumeUrl: '/Shalender_Singh_Resume.pdf',
+  resumeFilename: 'Shalender_Singh_Resume.pdf',
 };
 
 export const PROJECTS: Project[] = [
@@ -230,6 +232,22 @@ export const CERTIFICATES: CertificateItem[] = [
     verifyUrl: 'https://infyspringboard.onwingspan.com/web/en/app/profile/competency/certificate',
     skillsCovered: ['Python Data Structures', 'Algorithmic Control Flow', 'Functions & Modular Design', 'File I/O & Exception Handling'],
     badgeColor: 'lime',
+  },
+];
+
+export const TRAINING: TrainingItem[] = [
+  {
+    id: 'codsoft-intern',
+    role: 'Web Development & Software Engineering Intern',
+    company: 'CodSoft (Virtual)',
+    type: 'Internship / Training',
+    period: 'June 2026 — July 2026',
+    bullets: [
+      'Built interactive, responsive front-end web components using HTML5, CSS3, and JavaScript to enhance user experience.',
+      'Collaborated on bug fixing, code optimization, and cross-browser responsiveness testing.',
+      'Utilized Git and GitHub for version control, code reviews, and structured task management.',
+    ],
+    techStack: ['HTML5', 'CSS3', 'JavaScript', 'Git', 'GitHub'],
   },
 ];
 

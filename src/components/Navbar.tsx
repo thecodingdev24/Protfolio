@@ -1,15 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { Search, Menu, X, ArrowUpRight, Terminal } from 'lucide-react';
+import { Search, Menu, X, ArrowUpRight, Terminal, FileText, Download } from 'lucide-react';
 import { PROFILE } from '../data';
 import { ProfileImage } from './ProfileImage';
 
 interface NavbarProps {
   onOpenCommandPalette: () => void;
   activeSection: string;
+  onOpenResume?: () => void;
 }
 
-export const Navbar: React.FC<NavbarProps> = ({ onOpenCommandPalette, activeSection }) => {
+export const Navbar: React.FC<NavbarProps> = ({ onOpenCommandPalette, activeSection, onOpenResume }) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
@@ -109,6 +110,18 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenCommandPalette, activeSect
               </kbd>
             </button>
 
+            {/* Resume Button */}
+            <button
+              id="nav-resume-btn"
+              type="button"
+              onClick={onOpenResume}
+              className="hidden sm:inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-mono font-semibold bg-white hover:bg-slate-50 text-slate-800 border border-slate-300 shadow-2xs hover:border-slate-400 transition-all"
+              title="View and Download Shalender's Resume PDF"
+            >
+              <FileText className="w-3.5 h-3.5 text-emerald-600" />
+              <span>Resume</span>
+            </button>
+
             {/* Direct Contact Button */}
             <a
               href="#contact"
@@ -159,6 +172,17 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenCommandPalette, activeSect
               ))}
 
               <div className="pt-4 mt-2 border-t border-slate-100 flex flex-col gap-2">
+                <button
+                  type="button"
+                  onClick={() => {
+                    setMobileMenuOpen(false);
+                    onOpenResume?.();
+                  }}
+                  className="flex items-center justify-center gap-2 py-3 rounded-xl bg-white border-2 border-slate-900 text-slate-950 font-mono text-sm font-bold shadow-[2px_2px_0px_0px_#000]"
+                >
+                  <FileText className="w-4 h-4 text-emerald-600" />
+                  <span>View & Download Resume (PDF)</span>
+                </button>
                 <a
                   href={`mailto:${PROFILE.email}`}
                   className="flex items-center justify-center gap-2 py-3 rounded-xl bg-emerald-400 text-slate-950 font-mono text-sm font-bold shadow-sm"

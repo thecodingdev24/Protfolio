@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { MapPin, GraduationCap, ChevronDown, Sparkles, BookOpen } from 'lucide-react';
-import { EDUCATION } from '../data';
+import { MapPin, GraduationCap, ChevronDown, Sparkles, BookOpen, Briefcase, CheckCircle2 } from 'lucide-react';
+import { EDUCATION, TRAINING } from '../data';
 
 export const EducationSection: React.FC = () => {
   const [expandedId, setExpandedId] = useState<string>('lpu');
@@ -116,6 +116,62 @@ export const EducationSection: React.FC = () => {
             );
           })}
         </div>
+
+        {/* Training & Industry Experience (from Resume) */}
+        {TRAINING.length > 0 && (
+          <div className="mt-12">
+            <div className="flex items-center gap-2 mb-4">
+              <Briefcase className="w-5 h-5 text-emerald-600" />
+              <h3 className="font-space font-bold text-xl text-slate-950 uppercase tracking-tight">
+                Training & Internship Experience
+              </h3>
+            </div>
+
+            <div className="space-y-4">
+              {TRAINING.map((item) => (
+                <div
+                  key={item.id}
+                  className="rounded-2xl border-2 border-slate-900 bg-white p-6 shadow-[5px_5px_0px_0px_#000]"
+                >
+                  <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-4 border-b border-slate-200">
+                    <div>
+                      <div className="font-space font-bold text-lg text-slate-950">
+                        {item.role}
+                      </div>
+                      <div className="font-mono text-sm text-emerald-700 font-semibold mt-0.5">
+                        {item.company}
+                      </div>
+                    </div>
+                    <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-100 border border-slate-300 font-mono text-xs font-semibold text-slate-700 self-start sm:self-auto">
+                      <span>{item.period}</span>
+                    </div>
+                  </div>
+
+                  <div className="mt-4 space-y-2">
+                    {item.bullets.map((bullet, bIdx) => (
+                      <div key={bIdx} className="flex items-start gap-2.5 text-xs sm:text-sm text-slate-700">
+                        <CheckCircle2 className="w-4 h-4 text-emerald-600 mt-0.5 flex-shrink-0" />
+                        <span>{bullet}</span>
+                      </div>
+                    ))}
+                  </div>
+
+                  <div className="mt-5 pt-4 border-t border-slate-100 flex flex-wrap items-center gap-1.5">
+                    <span className="font-mono text-xs font-bold text-slate-500 mr-1">Tools:</span>
+                    {item.techStack.map((tech) => (
+                      <span
+                        key={tech}
+                        className="px-2.5 py-0.5 rounded-md bg-slate-100 text-slate-800 font-mono text-xs font-medium border border-slate-200"
+                      >
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
       </div>
     </section>
   );
